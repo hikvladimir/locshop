@@ -6,8 +6,8 @@
  * Time: 18:44
  */
 return array(
-    'host'=>'localhos',
-    'dbname'=>'mvcshop',
+    'host'=>'localhost',
+    'dbname'=>'phpshop',
     'user'=>'root',
     'password'=>'',
 );

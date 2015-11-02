@@ -24,22 +24,32 @@ class Router {
   public function run()
   {
      $uri=$this->GetUrl();
+
+
       foreach($this->routes as $uriPattern=>$path){
           if(preg_match("~$uriPattern~",$uri)) {
 
-              $seqments=explode('/',$path);
-             $controllerName=array_shift($seqments).'Controller';
+              $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+
+              $seqments=explode('/',$internalRoute);
+
+              $controllerName=array_shift($seqments).'Controller';
               $controllerName=ucfirst($controllerName);
+
               $actionName='action'.ucfirst(array_shift($seqments));
+
+              $parameters=$seqments;
+
               $controllerFile=ROOT.'/sourse/controllers/'.$controllerName.'.php';
               if(file_exists($controllerFile)){
                   include_once ($controllerFile);
               }
 
-              $parameters=$seqments;
+
 
               $controllerObject=new $controllerName;
-              $result=$controllerObject->$actionName($parameters);
+              $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+
               if ($result!=null){
                   break;
               }

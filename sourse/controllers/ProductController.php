@@ -9,8 +9,8 @@
 class ProductController {
     public function actionView($parameters)
     {
-       //print_r($parameters);
-       require_once(ROOT.'/sourse/views/product/view.php');
+       print_r($parameters);
+       //require_once(ROOT.'/sourse/views/product/view.php');
        return true;
 
     }
