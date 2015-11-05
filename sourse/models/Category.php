@@ -19,8 +19,10 @@ class Category {
        // var_dump($result);
         while ($row=$result->fetch()) {
 
-            $categoryList[$i]['id']=$row['id'];
-            $categoryList[$i]['name']=$row['name'];
+            $categoryList[$i] = array(
+                'id' => $row['id'],
+                'name' => $row['name']
+            );
 
             $i++;
         }
