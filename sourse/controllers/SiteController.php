@@ -7,6 +7,7 @@
  */
 
 include ROOT.'/sourse/models/Category.php';
+include ROOT.'/sourse/models/Product.php';
 
 class SiteController {
 
@@ -14,6 +15,8 @@ class SiteController {
 
         $categores=array();
         $categores=Category::getCategoryList();
+        $lastProduct=array();
+        $lastProduct=Product::getLatestProducts();
 
         require_once(ROOT.'/sourse/views/index.php');
         return true;

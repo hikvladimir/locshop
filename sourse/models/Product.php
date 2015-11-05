@@ -5,7 +5,7 @@
  * Date: 05.11.2015
  * Time: 19:20
  */
-
+require_once(ROOT.'/sourse/components/db.php');
 class Product {
 
     const SHOW_BY_DEFAULT = 6;
