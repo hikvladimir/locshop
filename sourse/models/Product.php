@@ -30,10 +30,12 @@ class Product {
         $i = 0;
         $productsList = array();
         while ($row = $result->fetch()) {
-            $productsList[$i]['id'] = $row['id'];
-            $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['price'] = $row['price'];
-            $productsList[$i]['is_new'] = $row['is_new'];
+            $productsList[$i]=array(
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'price'=> $row['price'],
+                'is_new' => $row['is_new']
+             );
             $i++;
         }
       return $productsList;
