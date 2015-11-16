@@ -16,5 +16,18 @@ class CatalogController {
         require_once(ROOT.'/sourse/views/catalog/index.php');
         return true;
     }
+    public function actionCategory($categoryId)
+    {
+        $categores=array();
+        $categores=Category::getCategoryList();
+
+        $categoryProducts=array();
+        $categoryProducts=Product::getProductListByCategory($categoryId);
+
+        require_once(ROOT.'/sourse/views/catalog/category.php');
+        return true;
+
+
+    }
 
 }

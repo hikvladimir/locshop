@@ -40,4 +40,41 @@ class Product {
         }
       return $productsList;
     }
+
+    public static function getProductListByCategory($categoryId, $page=1)
+    {
+
+        $limit = Product::SHOW_BY_DEFAULT;
+        // Смещение (для запроса)
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        // Соединение с БД
+        $db = Db::getConnection();
+        // Текст запроса к БД
+        $sql = 'SELECT id, name, price, is_new FROM product '
+                . 'WHERE status = 1 AND category_id = :category_id '
+                . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
+
+        // Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $result->execute();
+
+            $i=0;
+            $products=array();
+            while ($row = $result->fetch()){
+                $products[$i]=array(
+                    'id' => $row['id'],
+                    'name' => $row['name'],
+                    'image'=> '', // $row['image'],
+                    'price'=> $row['price'],
+                    'is_new' => $row['is_new']
+                );
+                $i++;
+            }
+            return $products;
+
+
+    }
 }
