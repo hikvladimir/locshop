@@ -6,8 +6,7 @@
  * Time: 18:32
  */
 
-include ROOT.'/sourse/models/Category.php';
-include ROOT.'/sourse/models/Product.php';
+
 
 class SiteController {
 

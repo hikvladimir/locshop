@@ -8,7 +8,7 @@
 require_once(ROOT.'/sourse/components/db.php');
 class Product {
 
-    const SHOW_BY_DEFAULT = 9;
+    const SHOW_BY_DEFAULT = 6;
 
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
     {
@@ -93,5 +93,20 @@ class Product {
         $result->execute();
         // Получение и возврат результатов
         return $result->fetch();
+    }
+    public static function getTotalProductsInCategory($categoryId)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+        // Текст запроса к БД
+        $sql = 'SELECT count(id) AS count FROM product WHERE status="1" AND category_id = :category_id';
+        // Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+        // Выполнение коменды
+        $result->execute();
+        // Возвращаем значение count - количество
+        $row = $result->fetch();
+        return $row['count'];
     }
 }
