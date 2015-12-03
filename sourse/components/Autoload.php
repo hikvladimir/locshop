@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Функция __autoload для автоматического подключения классов
@@ -10,6 +9,7 @@ function __autoload($class_name)
         '/sourse/models/',
         '/sourse/components/',
         '/sourse/controllers/',
+
     );
     // Проходим по массиву папок
     foreach ($array_paths as $path) {
