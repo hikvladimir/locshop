@@ -82,7 +82,7 @@ class UserController
                 User::auth($userId);
                 // Перенаправляем пользователя в закрытую часть - кабинет
                // ob_start();
-                header("Location: /cabinet/");
+               // header("Location: /cabinet");
             }
         }
         // Подключаем вид

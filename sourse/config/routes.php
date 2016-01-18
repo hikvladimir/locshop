@@ -12,6 +12,9 @@ return array (
     'cabinet/edit' => 'cabinet/edit',
     'cabinet' => 'cabinet/index',
     // Управление товарами:
+
+    'contacts' => 'site/contact',
+    'about' => 'site/about',
     ''=>'site/index',
 
 );
