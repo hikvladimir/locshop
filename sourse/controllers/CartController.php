@@ -54,7 +54,10 @@ class CartController
             // Получаем массив только с идентификаторами товаров
             $productsIds = array_keys($productsInCart);
             // Получаем массив с полной информацией о необходимых товарах
-            $products = Product::getProductById($productsIds);
+            $products = array();
+            foreach($productsIds as $key => $productId){
+                $products[] = Product::getProductById($productId);
+            }
             // Получаем общую стоимость товаров
             $totalPrice = Cart::getTotalPrice($products);
         }
@@ -74,7 +77,7 @@ class CartController
             header("Location: /");
         }
         // Список категорий для левого меню
-        $categories = Category::getCategoriesList();
+        $categories = Category::getCategoryList();
         // Находим общую стоимость
         $productsIds = array_keys($productsInCart);
         $products = Product::getProdustsByIds($productsIds);

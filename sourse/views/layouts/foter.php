@@ -17,6 +17,7 @@
 <script src="/sourse/template/js/price-range.js"></script>
 <script src="/sourse/template/js/jquery.prettyPhoto.js"></script>
 <script src="/sourse/template/js/main.js"></script>
+
 <script>
     $(document).ready(function(){
         $(".add-to-cart").click(function () {
