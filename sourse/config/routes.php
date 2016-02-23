@@ -11,7 +11,7 @@ return array (
     'cart/addAjax/([0-9]+)' => 'cart/addAjax/$1', // actionAddAjax в CartController
     'cart' => 'cart/index', // actionIndex в CartController
 
-
+    'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
     'admin/order' => 'adminOrder/index',
     // Админпанель:
     'admin' => 'admin/index',
